@@ -1,26 +1,21 @@
 {
-	"name": "header-tracker",
+	"name": "remark-util-heading-tracker",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Utility to track progress through Markdown 'heading' nodes",
 	"type": "module",
-	"main": "index.js",
+	"main": "heading-tracker.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://archive.voodoowarez.com/header-tracker"
+		"url": "https://archive.voodoowarez.com/remark-util-heading-tracker"
 	},
 	"keywords": [],
 	"author": "jauntywunderkind",
 	"license": "MIT",
-	"module": "header-tracker.js",
+	"module": "heading-tracker.js",
 	"esm": true,
-	"@std/esm": {
-		"cjs": {
-			"namedExports": true
-		}
-	},
 	"devDependencies": {
 		"mdast-util-from-markdown": "^0.8.5",
 		"tape": "^5.2.2"
