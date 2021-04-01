@@ -1,6 +1,6 @@
 {
 	"name": "remark-util-heading-tracker",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Utility to track progress through Markdown 'heading' nodes",
 	"type": "module",
 	"main": "heading-tracker.js",
