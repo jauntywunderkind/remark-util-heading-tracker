@@ -46,9 +46,9 @@ export class HeadingTracker{
 		let depth= node.depth
 		if (node.depth< this.depth){
 			// truncate to our new shallow point
-			this.texts= this.text.slice(0, depth)
+			this.texts= this.texts.slice(0, depth)
 			this.links= this.links.slice(0, depth)
-			this.counts= this.link.slice(0, depth)
+			this.counts= this.counts.slice(0, depth)
 		}
 		this.depth= depth
 
