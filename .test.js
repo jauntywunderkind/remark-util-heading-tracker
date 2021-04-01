@@ -4,8 +4,13 @@ import { linkExtract, HeadingTracker} from "./heading-tracker.js"
 import parse from "mdast-util-from-markdown"
 
 
-tape( "can parse link from headering text", function( t){
+tape( "can parse link from heading text", function( t){
 	t.deepEqual( linkExtract( "ok # {#place}"),{ text: "ok", link: "place"})
+	t.end()
+})
+
+tape( "can parse complex longer heading text", function( t){
+	t.deepEqual( linkExtract( "yes we can! # {#a-b-c}"),{ text: "yes we can!", link: "a-b-c"})
 	t.end()
 })
 

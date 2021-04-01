@@ -1,5 +1,5 @@
 
-const linkRegex= /(.*?)\s*#\s*\{#(\w+)}$/
+const linkRegex= /\s*(.*?)\s*#\s*{#(.+?)}\s*$/
 export function linkExtract( text){
 	const link= linkRegex.exec( text)
 	if( !link){
