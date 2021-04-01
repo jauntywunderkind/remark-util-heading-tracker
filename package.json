@@ -22,6 +22,7 @@
 		}
 	},
 	"devDependencies": {
+		"mdast-util-from-markdown": "^0.8.5",
 		"tape": "^5.2.2"
 	}
 }

@@ -33,8 +33,8 @@ export class HeadingTracker{
 		this.warns= 0
 	}
 
-	warn( msg){
-		console.warn( msg)
+	warn( ...msg){
+		console.warn( ...msg)
 		++this.warns
 	}
 
@@ -43,16 +43,18 @@ export class HeadingTracker{
 			return
 		}
 
+		let depth= node.depth
 		if (node.depth< this.depth){
 			// truncate to our new shallow point
-			this.texts= this.text.slice(0, node.depth)
-			this.links= this.links.slice(0, node.depth)
-			this.counts= this.link.slice(0, node.depth)
+			this.texts= this.text.slice(0, depth)
+			this.links= this.links.slice(0, depth)
+			this.counts= this.link.slice(0, depth)
 		}
-		this.depth= node.depth
+		this.depth= depth
 
 		// update counts
-		this.counts[ node.depth]=( this.counts[ depth] || 0)+ 1
+		depth--
+		this.counts[ depth]=( this.counts[ depth] || 0)+ 1
 
 		if( node.children.length> 1){
 			this.warn("unexpected child count on heading")
@@ -60,14 +62,14 @@ export class HeadingTracker{
 		}
 
 		const content= node.children[ 0]
-		if( this.allowedTypes.indexOf( content.type)!== -1){
+		if( this.allowedTypes.indexOf( content.type)=== -1){
 			this.warn("unexpected heading content type")
 			return
 		}
 
 		const heading= linkExtract( content.value)
-		this.texts[ node.depth]= heading.text
-		this.links[ node.depth]= heading.link
+		this.texts[ depth]= heading.text
+		this.links[ depth]= heading.link
 	}
 
 	lastLink(){
