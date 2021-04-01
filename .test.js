@@ -39,15 +39,29 @@ tape( "can visit a heading", function( t){
 
 tape( "headers advance", function( t){
 	const text= `
-# hello
-# hi
+# hello # {#one}
+# hi#{#two}
 	`
 	const walk= walker( text)
 	walk.next()
 	const tracker= walk.next().value
 
-	t.equal( tracker.depth, 1, "header 1")
-	t.deepEqual( tracker.texts, [ "hi"], "heading text")
-	t.deepEqual( tracker.links, [ undefined], "empty links")
+	t.equal( tracker.depth, 1, "depth 1")
+	t.deepEqual( tracker.texts, [ "hi"], "next header text")
+	t.deepEqual( tracker.links, [ "two"], "next header link")
+	t.end()
+})
+
+tape( "heading 2", function( t){
+	const text= `
+# h1!
+## ho!
+	`
+	const walk= walker( text)
+	walk.next()
+	const tracker= walk.next().value
+
+	t.equal( tracker.depth, 2, "depth 2")
+	t.deepEqual( tracker.texts, [ "h1!", "ho!"], "heading texts")
 	t.end()
 })
